@@ -1,7 +1,4 @@
 ---
-title: 分类
-categories:
-  - 奖项
-  - 项目
-  - 其他
+title: categories
+date: 2023-01-27 19:02:45
 ---
