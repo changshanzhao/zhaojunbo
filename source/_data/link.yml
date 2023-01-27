@@ -1,0 +1,6 @@
+class:
+  class_name: 友情链接
+  link_list:
+    1:
+      name: 小沈同学
+      link: blog.museday.top
