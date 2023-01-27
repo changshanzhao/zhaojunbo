@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ZhaoJunbo&#39;s Blog</title>
+  <icon>http://example.com/icon.png</icon>
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-01-27T04:26:50.520Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>ZhaoJunbo</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2023/01/27/hello-world/"/>
+    <id>http://example.com/2023/01/27/hello-world/</id>
+    <published>2023-01-27T03:16:44.467Z</published>
+    <updated>2023-01-27T04:26:50.520Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本次搭建参考&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
