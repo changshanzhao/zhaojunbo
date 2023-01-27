@@ -364,8 +364,8 @@ giscus:
   repo_id:
   category_id:
   theme:
-    light: light
-    dark: dark
+    light:
+    dark:
   option:
 
 # Remark42
