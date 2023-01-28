@@ -1,5 +1,5 @@
 - class_name: 开源平台
-  class_desc: Hexo
+  class_desc: 好用的开源项目
   link_list:
     - name: Hexo
       link: https://hexo.io/zh-tw/
@@ -11,4 +11,8 @@
     - name: 小沈同学
       link: https://blog.museday.top/
       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
-      descr: 博客为我搭建提供帮助
+      descr: 为我搭建博客提供帮助
+    - name: 豪哥
+      link: http://Charliechen114514.github.io
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: 好兄弟，冲冲冲!
