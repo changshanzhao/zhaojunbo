@@ -192,6 +192,10 @@ emmm, 虽然准确率稍微提高了5-10个百分点，但是过拟合太严重�
 
 期待大佬留言评论。
 
+![](证书.png)
+
+意料之中，寄。
+
 <script src="https://giscus.app/client.js"
         data-repo="changshanzhao/MathorCup"
         data-repo-id="R_kgDOI2ig8w"
