@@ -7,6 +7,7 @@ categories:
 
 # 最常用：
 
+```shell
 // 克隆远程代码下来本地
 -git clone xxxx
 // 修改的代码细节展示
@@ -69,9 +70,13 @@ git remote prune origin xxx 这个是修剪掉已经删除远程分支的本地�
 git log 查看最近的提交信息
 git reset --hard xxxxx回退到某一个历史节点
 如果改动回到较远的一个节点 git push 可能会失败报错，因此我们需要强推到一个版本的话 需要：
-git push -f -u // -u 这里是为了持续推送到指定分支 这里意义不大
-git rebase xxx
-git rebase --continue
+-git push -f -u // -u 这里是为了持续推送到指定分支 这里意义不大
+//下面两个命令参照这个网址 https://www.cnblogs.com/ellen-mylife/p/12794245.html
+-git rebase xxx
+-git rebase --continue
+```
+
+
 
 # 思考小练习（学长布置）：
 
