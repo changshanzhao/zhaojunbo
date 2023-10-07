@@ -1,0 +1,284 @@
+---
+title: cpp多线程笔记
+date: 2023-10-07 13:30:55
+tags:
+  - 教程
+  - 学习笔记
+---
+
+# 创建线程
+
+```c++
+void print(std::string msg){
+    std::cout << msg << std::endl;
+    return;
+}
+std::thread test1(print,"Hello C++");
+```
+
+第一个参数传函数名，第二个参数传参
+
+等待子线程结束后再往下运行,join是阻塞的
+
+```cpp
+test1.join();
+```
+
+分离线程，主线程可以结束，子线程在后台可以持续运行
+
+```cpp
+test1.detach();
+```
+
+判断该线程是否可以调用join或者detach，返回一个bool值
+
+```cpp
+test1.joinable();
+```
+
+传引用参数时使用std::ref
+
+```cpp
+void foo(int& x){}
+int a = 1
+std::thread t(foo, std::ref(a));
+```
+
+一种写法
+
+```cpp
+class A{
+public:
+	void foo(){
+		std::cout << "Hello" << std::endl;
+	}
+};
+std::shared_ptr<A> a = std::make_shared<A>();
+std::thread t(&A::foo, a);
+```
+
+我的理解是&A::foo是函数指针，和函数名一致，&a是函数参数对应this指针
+
+# 数据共享问题
+
+## 互斥锁mutex，lock和unlock
+
+```cpp
+int a = 0;
+std::mutex mtx;
+void func(){
+    for(int i = 0; i < 1000; i++){
+        mtx.lock();
+        a += 1;
+        mtx.unlock();
+    }
+
+}
+int main(){
+    std::thread t1(func);
+    std::thread t2(func);
+    t1.join();
+    t2.join();
+    std::cout << a << std::endl;
+}
+```
+
+## 死锁
+
+```cpp
+std::mutex m1,m2;
+void func_1{
+    m1.lock();
+    m2.lock();
+    m1.unlock();
+    m2.unlock();
+}
+void func_2{
+    m2.lock();
+    m1.lock();
+    m1.unlock();
+    m2.unlock();
+}
+std::thread t1(func_1);
+std::thread t2(func_2);
+```
+
+t1获取到m1之后，t2获取到m2，两个都在等待对方释放，卡死了，所以改进方案是
+
+```cpp
+void func_1{
+    m1.lock();
+    m2.lock();
+    m1.unlock();
+    m2.unlock();
+}
+void func_2{
+    m1.lock();
+    m2.lock();
+    m1.unlock();
+    m2.unlock();
+}
+```
+
+顺序一致就好了
+
+## lock_guard
+
+当构造函数被调用的时候，该互斥量会被自动锁定。
+
+当析构函数被调用时，该互斥量会自动解锁。
+
+该对象不能被复制和移动，只能在局部作用域中使用。
+
+```cpp
+std::mutex mtx;
+void func(){
+    for(int i = 0; i < 1000; i++){
+    	std::lock_guard<std::mutex> lg(mtx);
+    	a++;
+    }
+}
+```
+
+## unique_lock
+
+相比lock_guard额外增加延迟加锁，条件变量，超时等操作
+
+```cpp
+std::timed_mutex mtx; //时间锁
+std::unique_lock<std::timed_mutex> ul(mtx); //这种写法和lock_guard基础功能一致
+//这么写不自动加锁，只是构造函数有变化，至于析构，还是自动析构的
+std::unique_lock<std::timed_mutex> ul(mtx, std::defer_lock); 
+//尝试5秒钟内加锁，5秒钟获取不到返回false，获取到了返回true
+ul.try_lock_for(std::chrono::second(5));
+```
+
+## 单例的线程安全问题
+
+饿汉模式类定义的时候就实例化，本身是线程安全，不需要加锁。饿汉，就是不管三七二十一，这个类编译的时候就实例化，不考虑后面用不用得上。用法如下所示，直接在类外实例化，即初始化即实例化。
+
+懒汉模式，就是第一次用到类的示例才实例化。注意到，前面new语句放在GetInstance函数，这个函数需要外界调用才会发挥作用，然后new一个实例。形象点记忆，懒汉就是不到万不得已就不会去实例化类，我用不上那就先不管。懒汉模式是不安全的实现方式，是线程不安全的，需要加锁。
+
+解决1：加智能锁。不使用智能锁采用普通锁，lock()和unlock()这种加锁与解锁的方式，若空间没开辟成功直接返回，这时锁没解开就生成死锁。而智能锁不管有没有成功开辟空间，出了作用域的同时调用lock（）的析构函数把这个锁释放了，不会造成死锁。
+
+解决2：使用原子锁。
+
+解决3：使用once_flag
+
+```cpp
+// 饿汉模式，每次访问的地址都是同一个，但是该不能被释放掉
+class Log{
+public:
+	Log(const Log& log) = delete;
+    Log& operator=(const Log& log) = delete;
+    static Log& GetInstance(){
+        return *log;
+    }
+private:
+    static Log *log;
+    Log(){};
+}
+Log* Log::log = new Log;
+// 懒汉模式
+//定义全局锁
+mutex mtx;
+class Singleton
+{
+private:
+    static Singleton* singleton;
+    Singleton()
+    {
+        cout << "Singleton的构造" << endl;
+    }
+    ~Singleton()
+    {
+        cout <<"Singleton的析构" << endl;
+    }
+public:
+    static Singleton* getInstance()
+    {
+        lock_guard<mutex> lock(mtx);
+        //mtx.lock();  普通锁
+        if(singleton == nullptr)
+        {
+            singleton = new Singleton;
+        }
+        //mtx.unlock();
+        return singleton;
+    }
+    void showInfo()
+    {
+        cout << this << endl;
+    }
+    //专门设计一个释放堆区空间的逻辑
+    static void destroy()
+    {
+        //不要把这个逻辑放在析构函数中，将会出现无限递归
+        if(singleton != nullptr)
+        {
+            delete singleton;
+        }
+    }
+};
+Singleton* Singleton::singleton = nullptr;
+int main()
+{
+    Singleton* s1 = Singleton::getInstance();
+    Singleton* s2 = Singleton::getInstance();
+    Singleton* s3 = Singleton::getInstance();
+    s1->showInfo();
+    s2->showInfo();
+    s3->showInfo();
+    Singleton::destroy();
+    return 0;
+}
+// once_flag
+class Singleton
+{
+private:
+    static Singleton* singleton;
+    static std::once_flag once;
+    Singleton()
+    {
+        cout << "Singleton的构造" << endl;
+    }
+    ~Singleton()
+    {
+        cout <<"Singleton的析构" << endl;
+    }
+    static void init() {
+        if(singleton == nullptr)
+        {
+            singleton = new Singleton;
+        }
+    }
+public:
+    static Singleton* getInstance()
+    {
+        std::call_once(once, init);
+        return singleton;
+    }
+    void showInfo()
+    {
+        cout << this << endl;
+    }
+    //专门设计一个释放堆区空间的逻辑
+    static void destroy()
+    {
+        //不要把这个逻辑放在析构函数中，将会出现无限递归
+        if(singleton != nullptr)
+        {
+            delete singleton;
+        }
+    }
+};
+Singleton* Singleton::singleton = nullptr;
+```
+
+### 选择原则
+
+懒汉：在访问量比较小，采用懒汉模式。到有需要的时间才实例化对象，那它就不会提前占据内存空间，代价就是后续每次访问都会判断是否为空，增加时间成本。这是以时间换空间。
+
+饿汉：在访问量比较大，或者可能访问的线程比较多，采用饿汉模式。就算没用上实例对象，也会进行实例化，这是要占据一定内存的。但在后面需要使用的时候，就不需要判断之类语句，所以非常快速。这就是以空间换时间。
+
+# 未完待续......
