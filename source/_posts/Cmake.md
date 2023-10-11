@@ -4,6 +4,8 @@ date: 2023-03-02 19:32:00
 tags:
   - 教程
   - 学习笔记
+categories:
+	- 教程
 ---
 
 <a href="https://juejin.cn/post/7184793007302901820" target="_blank" >参考文档</a>
