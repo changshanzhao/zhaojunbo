@@ -393,3 +393,53 @@ for(int i = 0; i < 10; i++) {
 }
 ```
 
+#  异步
+
+std::async()异步操作的线程不用自己手动创建
+
+```cpp
+std::future<int> future_result = std::async(std::launch::async, func)
+cout << func() << endl;
+cout << future_result.get() << endl;
+```
+
+这种就需要
+
+```cpp
+std::packaged_task<int()> task(func);
+auto future_result = task.get_future();//auto的类型就是std::future<int>
+std::thread t1(std::move(task));
+cout << func() << endl;
+t1.join();
+cout << future_result.get() << endl;
+```
+
+promise，线程间的数据传递
+
+```cpp
+int func(std::promise<int> & f) {
+    f.set_value(1000);
+}
+int main() {
+    std::promise<int> f;
+    auto future_result = f.get_future();
+    std::thread t1(func, std::ref(f));
+    t1.join();
+    cout << future_result.get() << endl;
+    return 0;
+}
+```
+
+# 原子操作
+
+原子变量自带线程安全，不用加锁。
+
+```cpp
+#include <atomic>
+std::atomic<int> shared_data = 0;
+shared_data.load();//输出
+shared_data.store();//修改
+```
+
+相比于加锁，效率更高，时间更短。
+
