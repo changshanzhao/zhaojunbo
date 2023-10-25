@@ -403,7 +403,7 @@ cout << func() << endl;
 cout << future_result.get() << endl;
 ```
 
-这种就需要
+这种就需要，但是就有阻塞了()
 
 ```cpp
 std::packaged_task<int()> task(func);
