@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>ZhaoJunbo's Blog</title><meta name="author" content="ZhaoJunbo"><meta name="copyright" content="ZhaoJunbo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="但行好事，莫问前程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZhaoJunbo&#39;s Blog">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="ZhaoJunbo&#39;s Blog">
+<meta property="og:description" content="但行好事，莫问前程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/tit.jpg">
+<meta property="article:author" content="ZhaoJunbo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/tit.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ZhaoJunbo\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-12-17 18:19:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ZhaoJunbo's Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/upadte/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> Myself</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E"><i class="fa-fw /about/"></i><span> 0</span></a></li><li><a class="site-page child" href="/butterfly%E4%B8%BB%E9%A2%98"><i class="fa-fw https://github.com/jerryc127/hexo-theme-butterfly/"></i><span> 1</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="ZhaoJunbo's Blog"><span class="site-name">ZhaoJunbo's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/upadte/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> Myself</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E"><i class="fa-fw /about/"></i><span> 0</span></a></li><li><a class="site-page child" href="/butterfly%E4%B8%BB%E9%A2%98"><i class="fa-fw https://github.com/jerryc127/hexo-theme-butterfly/"></i><span> 1</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">ZhaoJunbo's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/changshanzhao" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2395624242@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/442726201" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/vim%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="vim常用快捷键">vim常用快捷键</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T06:34:10.000Z" title="发表于 2023-11-18 14:34:10">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">基本操作
+
+
+快捷键
+操作
+
+
+
+i
+进入插入模式
+
+
+
+…进行一些修改…
+
+
+:wq
+保存退出
+
+
+拓展操作
+
+
+快捷键
+操作
+
+
+
+ciw
+删除字段并且进入插入模式
+
+
+y
+复制光标所指的字符或单词
+
+
+yy
+复制当前行
+
+
+x
+剪切光标所指的字符或单词
+
+
+dd
+剪切当前行
+
+
+p
+粘贴
+
+
+u
+撤销
+
+
+ctrl+r
+步进（取消撤销）
+
+
+:(行数)
+前往指定行
+
+
+G
+到文件结尾
+
+
+gg
+到文件开头
+
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T03:19:11.000Z" title="发表于 2023-10-25 11:19:11">2023-10-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">红黑树特征
+每条路径黑节点数目一致
+红节点不相邻
+
+插入规则
+如果父节点为黑，直接插入。
+
+父叔为都红，颜色调换。
+
+父红叔黑，颜色调换，再移动，爷爷放下来，父亲放上去。
+
+父叔一红一黑，大脑CPU宕机…….宕机……
+
+反正就父亲爷爷叔叔颜色反转调换，父子关系调换…….
+
+
+2.7.3 学会放手</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/07/cpp%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="cpp多线程笔记">cpp多线程笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-07T05:30:55.000Z" title="发表于 2023-10-07 13:30:55">2023-10-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">创建线程void print(std::string msg)&#123;    std::cout &lt;&lt; msg &lt;&lt; std::endl;    return;&#125;std::thread test1(print,&quot;Hello C++&quot;);
+
+第一个参数传函数名，第二个参数传参
+等待子线程结束后再往下运行,join是阻塞的
+test1.join();
+
+分离线程，主线程可以结束，子线程在后台可以持续运行
+test1.detach();
+
+判断该线程是否可以调用join或者detach，返回一个bool值
+test1.joinable();
+
+传引用参数时使用std::ref
+void foo(int&amp; x)&#123;&#125;int a = 1std::thread t(foo, std::ref(a));
+
+一种写法
+class A&#123;public:	void foo()&#123;		std::cout &lt;&lt; &quot;Hello&quot; &lt;&lt; std::endl;	&#125; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/13/%E7%94%B5%E8%B5%9B%E5%9B%BD%E8%B5%9B%E6%80%BB%E7%BB%93/" title="电赛国赛总结">电赛国赛总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-13T04:37:28.000Z" title="发表于 2023-08-13 12:37:28">2023-08-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a></span></div><div class="content">草率……
+荒诞……
+累……
+但是
+学到很多
+目前收获最多的竞赛
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/23/%E9%9B%86%E5%88%9B%E8%B5%9B%E6%80%BB%E7%BB%93/" title="集创赛总结">集创赛总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-23T13:21:13.000Z" title="发表于 2023-07-23 21:21:13">2023-07-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a></span></div><div class="content">感受挺抽象的，没咋好好搞，但却是目前取得最理想的一个竞赛成绩。严格意义上我只投入了2天有效时间，neon加速和openmp主要也都是chatgpt帮忙写的，LIME的代码上网搜的。反正门槛确实是有的，但是怎么说呢，感觉投入还是太少了，初赛能进挺意外的，复赛（东北赛区决赛）三等奖属于意料之中和情理之中吧。
+收获其实我倒是觉得这个比赛成绩还是不太能拿出手，去了一趟大连，人生第一次见海，王老师申请经费报销差旅费，还是很感激的。另一方面就是能力的提升，结合现在正在混的互联网+竞赛，首先是学会了高效查论文，看论文，这个是最重要的一个收获。其次，学会了用openmp做一些简单的并行加速。最后，就是巩固了一下opencv。
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/03/C-STL/" title="C++STL">C++STL</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-03T10:19:52.000Z" title="发表于 2023-05-03 18:19:52">2023-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">STL通用操作
+字符串
+向量
+list链表
+
+队列
+栈
+映射表
+集合
+排序操作
+迭代器
+其他
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/02/git%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="git常用指令">git常用指令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-02T10:29:17.000Z" title="发表于 2023-05-02 18:29:17">2023-05-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">最常用：// 克隆远程代码下来本地-git clone xxxx// 修改的代码细节展示-git diff // 当前分支状态（改动总览）-git status// 会监控工作区的状态树，使用它会把工作时的所有变化提交到暂存区，// 包括文件内容修改(modified)以及新文件(new)，但不包括被删除的文件。(这个说法不正确，实验证明删除文件也是可以提交的)// git版本在2.x之后应该是把 . 和 -A作用相同化了 而不是晚上复制的-git add .-git add -A// 提交暂存区文件到本地仓库-git commit -m &quot;我的修改备注&quot;// 提交本地数据到 对应的远程分支-git push// 查看本地对应远程的分支对应关系-git branch -vv // 查看本地和远程所有分支-git branch -a // 以当前本地分支作为基础新建一个xxx分支（默认你这个xxx分支 也是push到 当前分支的远程分支）-git checkout -b xxx // 提交本地分支代码到 xxx远程分支-git push origin xxx // 将 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/11/ros%E5%A4%9A%E6%9C%BA%E9%80%9A%E4%BF%A1%E8%AE%BE%E7%BD%AE%E8%B8%A9%E5%9D%91%E4%B8%8E%E6%95%99%E7%A8%8B/" title="ros多机通信设置踩坑与教程">ros多机通信设置踩坑与教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-11T07:06:09.000Z" title="发表于 2023-03-11 15:06:09">2023-03-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">本教程针对EPRobot小车开发，但对ros通信的设置也具有一定的普适性。
+1.确保树莓派是AP连接模式（默认是AP模式，这个一般没问题）2.修改虚拟机home目录下的.bashrc文件，在最后附加上这段export ROS_MASTER_URL=http://EPRobot:11311export ROS_HOSTNAME=ubuntu
+
+这段话的意思是声明主机为EPRobot，也就是我们的小车，从机为ubuntu（我们虚拟机的用户名）
+3.先查一下你的ip地址，运行这条指令ifconfig
+
+inet后面的就是你的ip地址，AP模式下你的地址应该是196.168.12.xxx
+实际上在=的后面，我们应该输入对应的ip地址，但是我们现在是用EPRobot和ubuntu替代了，我的理解是Ubuntu系统也有一个类似c语言宏定义的东西。在etc文件夹下有hostname和hosts这两个文件
+其中，hostname里应该是这样的
+ubuntu
+
+hosts文件中应该有这两句话，需要对这两句进行修改
+127.0.1.1   ubuntu# 需要改成你查到的ip地址192.168.12.xx ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/02/Cmake/" title="Cmake">Cmake</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-02T11:32:00.000Z" title="发表于 2023-03-02 19:32:00">2023-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">参考文档
+官方文档
+变量的简单使用：set(A ON)if (A)    message(STATUS &quot;$&#123;A&#125;&quot;)    message(STATUS &quot;$&#123;PROJECT_NAME&#125;&quot;)    message(STATUS &quot;$&#123;PROJECT_SOURCE_DIR&#125;&quot;)    message(STATUS &quot;$&#123;PROJECT_BINARY_DIR&#125;&quot;)
+
+强制使用静态链接：set(CMAKE_EXE_LINKER_FLAGS &quot;-static&quot;)
+
+改可执行文件名：add_executable(use_easyx main.cpp)
+
+链接库：link_directories($&#123;PROJECT_SOURCE_DIR&#125;/lib)target_link_libraries(use_easyx easyx)
+
+include链接目录（头文件）：include_directories( ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/02/16/2023%E7%BE%8E%E8%B5%9B%E5%BB%BA%E6%A8%A1/" title="2023美赛建模">2023美赛建模</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-16T02:16:31.000Z" title="发表于 2023-02-16 10:16:31">2023-02-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a></span></div><div class="content">参考本文参考阿里云天池大赛赛题解析
+源码链接点这里
+源码modelimport warningswarnings.filterwarnings(&quot;ignore&quot;)import matplotlib.pyplot as pltplt.rcParams.update(&#123;&#x27;figure.max_open_warning&#x27;: 0&#125;)import seaborn as sns# modellingimport pandas as pdimport numpy as npfrom scipy import statsfrom sklearn.model_selection import train_test_splitfrom sklearn.model_selection import GridSearchCV, RepeatedKFold, cross_val_score,cross_val_predict,KFoldfrom sklearn.metrics import make_scorer,mean_squared_errorf ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ZhaoJunbo</div><div class="author-info__description">但行好事，莫问前程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/changshanzhao"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/changshanzhao" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2395624242@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/442726201" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/18/vim%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="vim常用快捷键">vim常用快捷键</a><time datetime="2023-11-18T06:34:10.000Z" title="发表于 2023-11-18 14:34:10">2023-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构</a><time datetime="2023-10-25T03:19:11.000Z" title="发表于 2023-10-25 11:19:11">2023-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/07/cpp%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="cpp多线程笔记">cpp多线程笔记</a><time datetime="2023-10-07T05:30:55.000Z" title="发表于 2023-10-07 13:30:55">2023-10-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/13/%E7%94%B5%E8%B5%9B%E5%9B%BD%E8%B5%9B%E6%80%BB%E7%BB%93/" title="电赛国赛总结">电赛国赛总结</a><time datetime="2023-08-13T04:37:28.000Z" title="发表于 2023-08-13 12:37:28">2023-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/23/%E9%9B%86%E5%88%9B%E8%B5%9B%E6%80%BB%E7%BB%93/" title="集创赛总结">集创赛总结</a><time datetime="2023-07-23T13:21:13.000Z" title="发表于 2023-07-23 21:21:13">2023-07-23</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%80%BB%E7%BB%93/"><span class="card-category-list-name">总结</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">教程</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AB%9E%E8%B5%9B/"><span class="card-category-list-name">竞赛</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AB%9E%E8%B5%9B-%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">竞赛 - 教程</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 1.1em; color: #999">博客搭建</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 1.5em; color: #99a9bf">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 1.26em; color: #999fa8">总结</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.42em; color: #99a6b7">教程</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1.18em; color: #999ca1">测试</a> <a href="/tags/%E7%AB%9E%E8%B5%9B/" style="font-size: 1.34em; color: #99a3b0">竞赛</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 1.1em; color: #999">项目</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">16</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-12-17T10:19:33.919Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By ZhaoJunbo</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["人间总有一两风 填我十万八千梦"])
+  } else {
+    document.getElementById("subtitle").innerHTML = '人间总有一两风 填我十万八千梦'
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
