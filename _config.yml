@@ -116,6 +116,8 @@ ignore:
 theme: butterfly
 
 # Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type:
+## Docs: One-Command Deployment
+deploy: 
+  type: git
+  repository: git@github.com:changshanzhao/changshanzhao.github.io.git
+  branch: master
