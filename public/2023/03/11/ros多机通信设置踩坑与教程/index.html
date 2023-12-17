@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>ros多机通信设置踩坑与教程 | ZhaoJunbo's Blog</title><meta name="author" content="ZhaoJunbo"><meta name="copyright" content="ZhaoJunbo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本教程针对EPRobot小车开发，但对ros通信的设置也具有一定的普适性。 1.确保树莓派是AP连接模式（默认是AP模式，这个一般没问题）2.修改虚拟机home目录下的.bashrc文件，在最后附加上这段export ROS_MASTER_URL&#x3D;http:&#x2F;&#x2F;EPRobot:11311export ROS_HOSTNAME&#x3D;ubuntu  这段话的意思是声明主机为EPRobot，也就是我们的小车">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ros多机通信设置踩坑与教程">
+<meta property="og:url" content="http://example.com/2023/03/11/ros%E5%A4%9A%E6%9C%BA%E9%80%9A%E4%BF%A1%E8%AE%BE%E7%BD%AE%E8%B8%A9%E5%9D%91%E4%B8%8E%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="ZhaoJunbo&#39;s Blog">
+<meta property="og:description" content="本教程针对EPRobot小车开发，但对ros通信的设置也具有一定的普适性。 1.确保树莓派是AP连接模式（默认是AP模式，这个一般没问题）2.修改虚拟机home目录下的.bashrc文件，在最后附加上这段export ROS_MASTER_URL&#x3D;http:&#x2F;&#x2F;EPRobot:11311export ROS_HOSTNAME&#x3D;ubuntu  这段话的意思是声明主机为EPRobot，也就是我们的小车">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/tit.jpg">
+<meta property="article:published_time" content="2023-03-11T07:06:09.000Z">
+<meta property="article:modified_time" content="2023-10-11T12:14:24.289Z">
+<meta property="article:author" content="ZhaoJunbo">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/tit.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/03/11/ros%E5%A4%9A%E6%9C%BA%E9%80%9A%E4%BF%A1%E8%AE%BE%E7%BD%AE%E8%B8%A9%E5%9D%91%E4%B8%8E%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ros多机通信设置踩坑与教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-11 20:14:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ZhaoJunbo's Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/upadte/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> Myself</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E"><i class="fa-fw /about/"></i><span> 0</span></a></li><li><a class="site-page child" href="/butterfly%E4%B8%BB%E9%A2%98"><i class="fa-fw https://github.com/jerryc127/hexo-theme-butterfly/"></i><span> 1</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="ZhaoJunbo's Blog"><span class="site-name">ZhaoJunbo's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/upadte/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> Myself</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E"><i class="fa-fw /about/"></i><span> 0</span></a></li><li><a class="site-page child" href="/butterfly%E4%B8%BB%E9%A2%98"><i class="fa-fw https://github.com/jerryc127/hexo-theme-butterfly/"></i><span> 1</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ros多机通信设置踩坑与教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-11T07:06:09.000Z" title="发表于 2023-03-11 15:06:09">2023-03-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-11T12:14:24.289Z" title="更新于 2023-10-11 20:14:24">2023-10-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ros多机通信设置踩坑与教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>本教程针对EPRobot小车开发，但对ros通信的设置也具有一定的普适性。</p>
+<h2 id="1-确保树莓派是AP连接模式（默认是AP模式，这个一般没问题）"><a href="#1-确保树莓派是AP连接模式（默认是AP模式，这个一般没问题）" class="headerlink" title="1.确保树莓派是AP连接模式（默认是AP模式，这个一般没问题）"></a>1.确保树莓派是AP连接模式（默认是AP模式，这个一般没问题）</h2><h2 id="2-修改虚拟机home目录下的-bashrc文件，在最后附加上这段"><a href="#2-修改虚拟机home目录下的-bashrc文件，在最后附加上这段" class="headerlink" title="2.修改虚拟机home目录下的.bashrc文件，在最后附加上这段"></a>2.修改虚拟机home目录下的.bashrc文件，在最后附加上这段</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export ROS_MASTER_URL=http://EPRobot:11311</span><br><span class="line">export ROS_HOSTNAME=ubuntu</span><br></pre></td></tr></table></figure>
+
+<p>这段话的意思是声明主机为EPRobot，也就是我们的小车，从机为ubuntu（我们虚拟机的用户名）</p>
+<h2 id="3-先查一下你的ip地址，运行这条指令"><a href="#3-先查一下你的ip地址，运行这条指令" class="headerlink" title="3.先查一下你的ip地址，运行这条指令"></a>3.先查一下你的ip地址，运行这条指令</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>inet后面的就是你的ip地址，AP模式下你的地址应该是196.168.12.xxx</p>
+<p>实际上在=的后面，我们应该输入对应的ip地址，但是我们现在是用EPRobot和ubuntu替代了，我的理解是Ubuntu系统也有一个类似c语言宏定义的东西。在etc文件夹下有hostname和hosts这两个文件</p>
+<p>其中，hostname里应该是这样的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ubuntu</span><br></pre></td></tr></table></figure>
+
+<p>hosts文件中应该有这两句话，需要对这两句进行修改</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">127.0.1.1   ubuntu</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">需要改成你查到的ip地址</span></span><br><span class="line">192.168.12.xxx   ubuntu</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">确认一下有没有下面这句话，没有就加上</span></span><br><span class="line">192.168.12.1 EPRobot</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>要用root用户权限编辑etc目录下的文件，例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<p>如果不会用vim，就执行下面这句：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-我就是在下面这步踩坑了"><a href="#4-我就是在下面这步踩坑了" class="headerlink" title="4.我就是在下面这步踩坑了"></a>4.我就是在下面这步踩坑了</h2><p>其实说起来很弱智，不过确实是我疏忽大意了。<u><strong>上述的这些配置，小车也要改，呜呜呜。</strong></u></p>
+<p>首先</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh EPRobot@192.168.12.1</span><br></pre></td></tr></table></figure>
+
+<p>输入密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ncut1234</span><br></pre></td></tr></table></figure>
+
+<p>然后你就能用命令行操作树莓派了，我建议大家还是学一下Linux命令行操作，有时候不得不用。</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h4 id="vim的简单使用"><a href="#vim的简单使用" class="headerlink" title="vim的简单使用"></a>vim的简单使用</h4><p>按i进入insert模式（可编辑模式）</p>
+<p>修改完之后按esc</p>
+<p>最后输入:wq退出</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">ZhaoJunbo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/03/11/ros%E5%A4%9A%E6%9C%BA%E9%80%9A%E4%BF%A1%E8%AE%BE%E7%BD%AE%E8%B8%A9%E5%9D%91%E4%B8%8E%E6%95%99%E7%A8%8B/">http://example.com/2023/03/11/ros%E5%A4%9A%E6%9C%BA%E9%80%9A%E4%BF%A1%E8%AE%BE%E7%BD%AE%E8%B8%A9%E5%9D%91%E4%B8%8E%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">ZhaoJunbo's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post_share"><div class="social-share" data-image="/img/tit.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/02/git%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="git常用指令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">git常用指令</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/02/Cmake/" title="Cmake"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Cmake</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/02/Cmake/" title="Cmake"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-02</div><div class="title">Cmake</div></div></a></div><div><a href="/2023/05/03/C-STL/" title="C++STL"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-03</div><div class="title">C++STL</div></div></a></div><div><a href="/2023/10/07/cpp%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="cpp多线程笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-07</div><div class="title">cpp多线程笔记</div></div></a></div><div><a href="/2023/05/02/git%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="git常用指令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-02</div><div class="title">git常用指令</div></div></a></div><div><a href="/2023/11/18/vim%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="vim常用快捷键"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">vim常用快捷键</div></div></a></div><div><a href="/2023/10/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-25</div><div class="title">数据结构</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ZhaoJunbo</div><div class="author-info__description">但行好事，莫问前程</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/changshanzhao"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/changshanzhao" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2395624242@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/442726201" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A1%AE%E4%BF%9D%E6%A0%91%E8%8E%93%E6%B4%BE%E6%98%AFAP%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%BB%98%E8%AE%A4%E6%98%AFAP%E6%A8%A1%E5%BC%8F%EF%BC%8C%E8%BF%99%E4%B8%AA%E4%B8%80%E8%88%AC%E6%B2%A1%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">1.确保树莓派是AP连接模式（默认是AP模式，这个一般没问题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E8%99%9A%E6%8B%9F%E6%9C%BAhome%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84-bashrc%E6%96%87%E4%BB%B6%EF%BC%8C%E5%9C%A8%E6%9C%80%E5%90%8E%E9%99%84%E5%8A%A0%E4%B8%8A%E8%BF%99%E6%AE%B5"><span class="toc-number">2.</span> <span class="toc-text">2.修改虚拟机home目录下的.bashrc文件，在最后附加上这段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%85%88%E6%9F%A5%E4%B8%80%E4%B8%8B%E4%BD%A0%E7%9A%84ip%E5%9C%B0%E5%9D%80%EF%BC%8C%E8%BF%90%E8%A1%8C%E8%BF%99%E6%9D%A1%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">3.先查一下你的ip地址，运行这条指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%88%91%E5%B0%B1%E6%98%AF%E5%9C%A8%E4%B8%8B%E9%9D%A2%E8%BF%99%E6%AD%A5%E8%B8%A9%E5%9D%91%E4%BA%86"><span class="toc-number">4.</span> <span class="toc-text">4.我就是在下面这步踩坑了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">5.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vim%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-number">5.0.1.</span> <span class="toc-text">vim的简单使用</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/18/vim%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="vim常用快捷键">vim常用快捷键</a><time datetime="2023-11-18T06:34:10.000Z" title="发表于 2023-11-18 14:34:10">2023-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构</a><time datetime="2023-10-25T03:19:11.000Z" title="发表于 2023-10-25 11:19:11">2023-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/07/cpp%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="cpp多线程笔记">cpp多线程笔记</a><time datetime="2023-10-07T05:30:55.000Z" title="发表于 2023-10-07 13:30:55">2023-10-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/13/%E7%94%B5%E8%B5%9B%E5%9B%BD%E8%B5%9B%E6%80%BB%E7%BB%93/" title="电赛国赛总结">电赛国赛总结</a><time datetime="2023-08-13T04:37:28.000Z" title="发表于 2023-08-13 12:37:28">2023-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/23/%E9%9B%86%E5%88%9B%E8%B5%9B%E6%80%BB%E7%BB%93/" title="集创赛总结">集创赛总结</a><time datetime="2023-07-23T13:21:13.000Z" title="发表于 2023-07-23 21:21:13">2023-07-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By ZhaoJunbo</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
